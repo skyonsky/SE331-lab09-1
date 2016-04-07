@@ -1,16 +1,18 @@
 (function() {
 'use strict';
-var langController = angular.module('languageControllers',['languageServices']);
+  angular
+    .module('app')
+    .controller('languageController',languageController);
 
-langController.controller('languageController',['$scope','$translate','$location','$locale',
-    function($scope,$translate,$location,$locale){
-        var currentLocal = $locale.id.substring(0,2);
+  /** @ngInject */
+    function languageController($scope,$translate,$location,$locale){
+    var currentLocal = $locale.id.substring(0,2);
 
-        $scope.currentLocale = currentLocal;
-        $scope.changeLanguage = function(locale){
-            $translate.use(locale);
-            $location.search('lang',locale);
-            $scope.currentLocale=locale;
-        }
-    }])
+    $scope.currentLocale = currentLocal;
+    $location.search('lang',locale);
+    $scope.currentLocale=locale;
+
+  };
+
+
 })();

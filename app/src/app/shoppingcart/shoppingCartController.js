@@ -1,11 +1,11 @@
 (function() {
 'use strict';
+  angular
+    .module('app')
+    .controller('shoppingCartController', shoppingCartController);
 
-var shoppingCartControllers = angular.module('shoppingCartControllers', ['shoppingCartServices']);
-
-shoppingCartControllers.controller('showShoppingCartController',
-        ['$scope', 'shoppingCartService', '$location', '$rootScope','$routeParams',
-    function ($scope, shoppingCartService, $location, $rootScope,$rootParams) {
+  /** @ngInject */
+    function shoppingCartController($scope, shoppingCartService, $location, $rootScope,$rootParams) {
         var id = $rootParams.id;
         shoppingCartService.get({id:id},function(data){
             $scope.cart = data;
@@ -35,5 +35,5 @@ shoppingCartControllers.controller('showShoppingCartController',
 
             return total;
         }
-    }]);
+    };
 })();

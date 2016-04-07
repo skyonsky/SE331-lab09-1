@@ -1,10 +1,14 @@
 (function() {
 'use strict';
 
-var productMainController = angular.module('productMainController', ['productServices']);
+  angular
+    .module('app')
+    .controller('addProductController',addProductController)
+    .controller('editProductController',editProductController)
+    .controller('listProductController',listProductController);
 
-productMainController.controller('addProductController', ['$scope', '$http', '$location', '$rootScope','productService',
-    function ($scope, $http, $location, $rootScope,productService) {
+  /** @ngInject */
+    function addProductController ($scope, $http, $location, $rootScope,productService) {
         $scope.product = {};
         $scope.addPerson = true;
         $scope.editPerson = false;
@@ -25,10 +29,10 @@ productMainController.controller('addProductController', ['$scope', '$http', '$l
             });
         }
 
-    }]);
+    };
 
-productMainController.controller('listProductController', ['$scope', '$http', '$rootScope','productService','$route','totalCalService','queryProductService',
-    function ($scope, $http, $rootScope,productService,$route,totalCalService,queryProductService) {
+    /** @ngInject */
+    function editProductController($scope, $http, $rootScope,productService,$route,totalCalService,queryProductService) {
         //$http.get("/product/").success(function (data) {
         var data = productService.query(function(){
            // $scope.totalNetPrice= totalCalService.getTotalNetPrice(data);
@@ -58,10 +62,10 @@ productMainController.controller('listProductController', ['$scope', '$http', '$
             });
         }
 
-    }]);
+    };
 
-productMainController.controller('editProductController', ['$scope', '$http', '$routeParams', '$location', '$rootScope','productService',
-    function ($scope, $http, $routeParams, $location, $rootScope,productService) {
+    /** @ngInject */
+    function listProductController ($scope, $http, $routeParams, $location, $rootScope,productService) {
         $scope.addPerson = false;
         $scope.editPerson = true;
         var id = $routeParams.id;
@@ -76,5 +80,5 @@ productMainController.controller('editProductController', ['$scope', '$http', '$
                 $location.path("listProduct");
             });
         }
-    }]);
+    };
 })();

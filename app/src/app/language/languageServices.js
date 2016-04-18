@@ -1,19 +1,18 @@
-(function() {
-'use strict';
-  angular
-    .module('app',[])
-    .factory('UrlLanguageStorage',urlLanguageStorage);
+(function () {
+  'use strict';
 
-  /** @ngInject */
-  function urlLanguageStorage($location){
+  angular
+    .module('app')
+    .factory('UrlLanguageStorage', urlLanguageStorage);
+
+  /**@ngInject*/
+  function urlLanguageStorage($location) {
     return {
-      put: function () {
+      put: function (name, value) {
       },
-      get: function () {
+      get: function (name) {
         return $location.search()['lang']
       }
     };
   }
-
-
 })();

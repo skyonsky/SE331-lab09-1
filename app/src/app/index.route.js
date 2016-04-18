@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app',[])
     .config(routeConfig);
 
   function routeConfig($routeProvider) {
@@ -10,18 +10,22 @@
       .when('/addProduct', {
         templateUrl: 'app/product/editProduct.html',
         controller: 'addProductController',
+        controllerAs:'addProductController'
       })
       .when('/editProduct/:id', {
         templateUrl: 'app/product/editProduct.html',
         controller: 'editProductController',
+        controllerAs:'editProductController'
       })
       .when('/listProduct', {
         templateUrl: 'app/product/productList.html',
         controller: 'listProductController',
+        controllerAs:'vm'
       })
       .when('/shoppingCart/:id', {
         templateUrl: 'app/product/shoppingCart.html',
         controller: 'showShoppingCartController',
+        controllerAs:'showShoppingCartController'
       })
 
       .otherwise({

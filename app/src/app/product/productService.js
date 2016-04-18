@@ -2,7 +2,7 @@
 'use strict'
 
   angular
-    .module('app')
+    .module('app',[])
     .factory('productService',productService)
     .factory('totalCalService',totalCalService)
     .factory('queryProductService',queryProductService);

@@ -2,11 +2,13 @@
   'use strict';
 
   angular
-    .module('labapp',[
+    .module('app',[
             'ngRoute',
             'ngResource',
             'pascalprecht.translate',
-            'flow'
+            'flow',
+            'ngResource+apiPrefix',
+            'cgBusy'
             ]);
 
 })();

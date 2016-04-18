@@ -2,7 +2,8 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app',[])
+    .config(config)
     .config(configTranslation)
     .config(configCompilerProvider)
     .config(configFlowFactoryProvider);
@@ -31,19 +32,20 @@
   /** @ngInject */
   function configFlowFactoryProvider(flowFactoryProvider) {
     flowFactoryProvider.default = {
-      target :'',
-      permanentErrors:[500, 501],
-      maxChunkRetries:1,
-      chunkRetryInterval:5000,
-      simultaneousUploads :4,
-      singleFile:false
+      target: '',
+      permanentErrors: [500, 501],
+      maxChunkRetries: 1,
+      chunkRetryInterval: 5000,
+      simultaneousUploads: 4,
+      singleFile: false
     };
-
+  }
     /** @ngInject */
-    function configConpilerProvider($compileProvider) {
+
+    function configCompilerProvider($compileProvider) {
       $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|chrome-extension):/);
       $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data):/);
     }
-  }
+
 
 })();
